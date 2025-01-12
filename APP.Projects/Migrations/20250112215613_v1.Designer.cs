@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APP.Projects.Migrations
 {
     [DbContext(typeof(ProjectsDb))]
-    [Migration("20250108002909_v1")]
+    [Migration("20250112215613_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -161,58 +161,58 @@ namespace APP.Projects.Migrations
 
             modelBuilder.Entity("APP.Projects.Domain.ProjectTag", b =>
                 {
-                    b.HasOne("APP.Projects.Domain.Project", "Project")
-                        .WithMany("ProjectTags")
+                    b.HasOne("APP.Projects.Domain.Project", "_Project")
+                        .WithMany("_ProjectTags")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("APP.Projects.Domain.Tag", "Tag")
-                        .WithMany("ProjectTags")
+                    b.HasOne("APP.Projects.Domain.Tag", "_Tag")
+                        .WithMany("_ProjectTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Project");
+                    b.Navigation("_Project");
 
-                    b.Navigation("Tag");
+                    b.Navigation("_Tag");
                 });
 
             modelBuilder.Entity("APP.Projects.Domain.UserWork", b =>
                 {
-                    b.HasOne("APP.Projects.Domain.Work", "Work")
-                        .WithMany("UserWorks")
+                    b.HasOne("APP.Projects.Domain.Work", "_Work")
+                        .WithMany("_UserWorks")
                         .HasForeignKey("WorkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Work");
+                    b.Navigation("_Work");
                 });
 
             modelBuilder.Entity("APP.Projects.Domain.Work", b =>
                 {
-                    b.HasOne("APP.Projects.Domain.Project", "Project")
-                        .WithMany("Works")
+                    b.HasOne("APP.Projects.Domain.Project", "_Project")
+                        .WithMany("_Works")
                         .HasForeignKey("ProjectId");
 
-                    b.Navigation("Project");
+                    b.Navigation("_Project");
                 });
 
             modelBuilder.Entity("APP.Projects.Domain.Project", b =>
                 {
-                    b.Navigation("ProjectTags");
+                    b.Navigation("_ProjectTags");
 
-                    b.Navigation("Works");
+                    b.Navigation("_Works");
                 });
 
             modelBuilder.Entity("APP.Projects.Domain.Tag", b =>
                 {
-                    b.Navigation("ProjectTags");
+                    b.Navigation("_ProjectTags");
                 });
 
             modelBuilder.Entity("APP.Projects.Domain.Work", b =>
                 {
-                    b.Navigation("UserWorks");
+                    b.Navigation("_UserWorks");
                 });
 #pragma warning restore 612, 618
         }

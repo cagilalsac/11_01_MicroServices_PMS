@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APP.Users.Migrations
 {
     [DbContext(typeof(UsersDb))]
-    [Migration("20250108002933_v1")]
+    [Migration("20250112215705_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -83,18 +83,18 @@ namespace APP.Users.Migrations
 
             modelBuilder.Entity("APP.Users.Domain.User", b =>
                 {
-                    b.HasOne("APP.Users.Domain.Role", "Role")
-                        .WithMany("Users")
+                    b.HasOne("APP.Users.Domain.Role", "_Role")
+                        .WithMany("_Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("_Role");
                 });
 
             modelBuilder.Entity("APP.Users.Domain.Role", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("_Users");
                 });
 #pragma warning restore 612, 618
         }

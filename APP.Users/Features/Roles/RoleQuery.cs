@@ -27,12 +27,12 @@ namespace APP.Users.Features.Roles
 
         public Task<IQueryable<RoleQueryResponse>> Handle(RoleQueryRequest request, CancellationToken cancellationToken)
         {
-            var query = _db.Roles.Include(r => r.Users)
+            var query = _db.Roles.Include(r => r._Users)
                 .OrderBy(r => r.Name).Select(r => new RoleQueryResponse()
             {
                 Id = r.Id,
                 Name = r.Name,
-                Users = r.Users.Select(u => new UserQueryResponse()
+                Users = r._Users.Select(u => new UserQueryResponse()
                 {
                     FullName = u.Name + " " + u.Surname,
                     Id = u.Id,

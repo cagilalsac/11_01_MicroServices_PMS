@@ -32,7 +32,7 @@ namespace API.Users.Controllers
             _db.Roles.Add(new Role()
             {
                 Name = "Admin",
-                Users = new List<User>()
+                _Users = new List<User>()
                 {
                     new User()
                     {
@@ -47,7 +47,7 @@ namespace API.Users.Controllers
             _db.Roles.Add(new Role()
             {
                 Name = "User",
-                Users = new List<User>()
+                _Users = new List<User>()
                 {
                     new User()
                     {

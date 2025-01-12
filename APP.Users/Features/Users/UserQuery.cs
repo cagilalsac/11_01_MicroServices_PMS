@@ -30,7 +30,7 @@ namespace APP.Users.Features.Users
 
         public Task<IQueryable<UserQueryResponse>> Handle(UserQueryRequest request, CancellationToken cancellationToken)
         {
-            var query = _db.Users.Include(u => u.Role)
+            var query = _db.Users.Include(u => u._Role)
                 .OrderBy(u => u.Name).Select(u => new UserQueryResponse()
             {
                 Id = u.Id,
@@ -39,7 +39,7 @@ namespace APP.Users.Features.Users
                 IsActive = u.IsActive,
                 IsActiveF = u.IsActive ? "Active" : "Inactive",
                 Password = u.Password,
-                Role = u.Role.Name,
+                Role = u._Role.Name,
                 Surname = u.Surname,
                 UserName = u.UserName,
                 RoleId = u.RoleId

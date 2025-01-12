@@ -24,6 +24,6 @@ namespace APP.Users.Domain
         public string Surname { get; set; }
 
         public int RoleId { get; set; }
-        public Role Role { get; set; }
+        public Role _Role { get; set; }
     }
 }

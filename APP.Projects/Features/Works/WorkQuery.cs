@@ -31,7 +31,7 @@ namespace APP.Projects.Features.Works
 
         public Task<IQueryable<WorkQueryResponse>> Handle(WorkQueryRequest request, CancellationToken cancellationToken)
         {
-            var query = _db.Works.Include(w => w.Project).ThenInclude(p => p.ProjectTags).ThenInclude(pt => pt.Tag)
+            var query = _db.Works.Include(w => w._Project).ThenInclude(p => p._ProjectTags).ThenInclude(pt => pt._Tag)
                 .OrderByDescending(w => w.DueDate).ThenByDescending(w => w.StartDate).ThenBy(w => w.Name)
                 .Select(w => new WorkQueryResponse()
             {
@@ -42,13 +42,13 @@ namespace APP.Projects.Features.Works
                 Name = w.Name,
                 Project = w.ProjectId.HasValue ? new ProjectQueryResponse()
                 {
-                    Description = w.Project.Description,
-                    Id = w.Project.Id,
-                    Name = w.Project.Name,
-                    TagIds = w.Project.TagIds,
-                    Tags = string.Join(", ", w.Project.ProjectTags.Select(pt => pt.Tag.Name)),
-                    Url = w.Project.Url,
-                    Version = w.Project.Version
+                    Description = w._Project.Description,
+                    Id = w._Project.Id,
+                    Name = w._Project.Name,
+                    TagIds = w._Project.TagIds,
+                    Tags = string.Join(", ", w._Project._ProjectTags.Select(pt => pt._Tag.Name)),
+                    Url = w._Project.Url,
+                    Version = w._Project.Version
                 } : null,
                 ProjectId = w.ProjectId,
                 StartDate = w.StartDate,

@@ -79,7 +79,7 @@ namespace API.Projects.Controllers
             {
                 Description = "Bilkent University Computer Technology and Information Systems CTIS 465 Lecture",
                 Name = "Bilkent CTIS 465 Spring 2025",
-                ProjectTags = new List<ProjectTag>()
+                _ProjectTags = new List<ProjectTag>()
                 {
                     new ProjectTag()
                     {
@@ -111,7 +111,7 @@ namespace API.Projects.Controllers
             {
                 Description = "Bilkent University Computer Technology and Information Systems CTIS 479 Lecture",
                 Name = "Bilkent CTIS 479 Fall 2025",
-                ProjectTags = new List<ProjectTag>()
+                _ProjectTags = new List<ProjectTag>()
                 {
                     new ProjectTag()
                     {

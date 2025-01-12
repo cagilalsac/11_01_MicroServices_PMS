@@ -20,6 +20,6 @@ namespace APP.Projects.Domain
 
         public int WorkId { get; set; }
 
-        public Work Work { get; set; }
+        public Work _Work { get; set; }
     }
 }

@@ -19,10 +19,10 @@ namespace APP.Projects.Features.Works
 
         public async Task<CommandResponse> Handle(WorkDeleteRequest request, CancellationToken cancellationToken)
         {
-            var work = _db.Works.Include(w => w.UserWorks).SingleOrDefault(w => w.Id == request.Id);
+            var work = _db.Works.Include(w => w._UserWorks).SingleOrDefault(w => w.Id == request.Id);
             if (work is null)
                 return Error("Work not found!");
-            _db.UserWorks.RemoveRange(work.UserWorks);
+            _db.UserWorks.RemoveRange(work._UserWorks);
             _db.Works.Remove(work);
             await _db.SaveChangesAsync(cancellationToken);
             return Success("Work deleted successfully", work.Id);
